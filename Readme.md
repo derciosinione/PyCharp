@@ -26,6 +26,8 @@ Python is being used for Back-end using the following technologies:
 <li>Django</li>
 <li>Graphene-django</li>
 <li>django-graphql-jwt</li>
+<li>django_filters</li>
+<li>corsheaders</li>
 </ul>
 
 ## Section 2: C#
