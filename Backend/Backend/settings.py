@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'graphene_django',
+    'django_filters',
     
-    'api.User',
+    'users.apps.UsersConfig',
     
 ]
 
