@@ -14,3 +14,5 @@ class NetworkCredential(models.Model):
     link = models.CharField(max_length=100,null=False,blank=False)
     password = models.CharField(max_length=50)
     
+    def __str__(self):
+        return self.social_network
