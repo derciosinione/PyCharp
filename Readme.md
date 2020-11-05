@@ -2,7 +2,17 @@
 This project will be built using Python and C#.
 
 ## Objectives
+<p>Create an app where the user can save his/her social network passwords.</p>
 
+### Funcionalities
+<ul>
+<li>create an account</li>
+<li>User can login into the system</li>
+<li>User can create new credential</li>
+<li>User can see his/her credentials</li>
+<li>User can update his/her credential</li>
+<li>User can delete his/her credential</li>
+</ul>
 
 ## Section 1: Python
 Python is being used for Back-end using the following technologies:
