@@ -2,7 +2,7 @@
 This project will be built using Python and C#.
 
 ## Objectives
-<p>Create an app where the user can save his/her social network passwords.</p>
+<p>Create an app where the user can save his/her social network credential.</p>
 
 ### Funcionalities
 <ul>
