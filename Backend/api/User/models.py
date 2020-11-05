@@ -15,4 +15,4 @@ class NetworkCredential(models.Model):
     password = models.CharField(max_length=50)
     
     def __str__(self):
-        return self.social_network
+        return '%s - %s' % (self.user.username,self.social_network) 
