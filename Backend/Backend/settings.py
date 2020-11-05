@@ -44,6 +44,14 @@ INSTALLED_APPS = [
     
 ]
 
+GRAPHENE = {
+'SCHEMA': 'Backend.schema.schema',
+"SCHEMA_INDENT": 4,
+"MIDDLEWARE": [
+    "graphene_django.debug.DjangoDebugMiddleware",
+    ]
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
