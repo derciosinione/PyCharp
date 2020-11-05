@@ -3,10 +3,8 @@ from graphene import relay, ObjectType, ID, Field
 from graphql_relay import from_global_id
 
 from .geralImports import DsRelayFormMutation 
-
 from .query import NetworkCredentialType, UserType
-from .models import User, NetworkCredential
-from .forms import UserForm, NetworkCredentialForm
+from .forms import User, NetworkCredential, UserForm, NetworkCredentialForm
 
 
 ####### Usuarios
