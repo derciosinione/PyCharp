@@ -1,7 +1,6 @@
 from django.db import models
-
-from django.db import models
 from django.contrib.auth.models import User
+
 
 class Profile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -19,3 +18,4 @@ class NetworkCredential(models.Model):
     
     def __str__(self):
         return '%s - %s' % (self.user.username,self.social_network) 
+

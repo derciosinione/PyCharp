@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 	'corsheaders',
     'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
 
-    'users',
+    'users.apps.UsersConfig',
 ]
 
 GRAPHENE = {

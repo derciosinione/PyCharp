@@ -1,21 +1,35 @@
+from graphene import relay, ObjectType, String
+
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 
-from graphene import relay, ObjectType
-from .models import NetworkCredential
-from .filterTypes import NetworkCredentialFilter
+from .filerTypes import UserFilter, NetworkCredentialFilter
+from .models import User, NetworkCredential
 
+
+class UserType(DjangoObjectType):
+    class Meta:
+        model = User
+        filterset_class = UserFilter 
+        exclude = ('password',)
+        interfaces = (relay.Node,)
+    
+    full_name = String()
+
+    def resolve_full_name(self, info):
+        return '%s %s' % (self.first_name, self.last_name)
+    
+    
 class NetworkCredentialType(DjangoObjectType):
     class Meta:
         model = NetworkCredential
-        filterset_class = NetworkCredentialFilter
-        interfaces = (relay.Node,)    
+        filterset_class = NetworkCredentialFilter 
+        interfaces = (relay.Node,)
     
+
 class Query(ObjectType):
-    credential = relay.Node.Field(NetworkCredentialType)
-    all_credential = DjangoFilterConnectionField(NetworkCredentialType)
+    user = relay.Node.Field(UserType)
+    all_users = DjangoFilterConnectionField(UserType)
     
-    # @login_required
-    # @superuser_required
-    def resolve_all_post(self, info, **kwargs):
-        pass
+    credential = relay.Node.Field(NetworkCredentialType)
+    all_credentials = DjangoFilterConnectionField(NetworkCredentialType)
