@@ -4,9 +4,10 @@ from graphql_relay import from_global_id
 
 from .geralImports import DsRelayFormMutation 
 
-from .models import User
-from .query import UserType
-from .forms import UserForm
+from .query import NetworkCredentialType, UserType
+from .models import User, NetworkCredential
+from .forms import UserForm, NetworkCredentialForm
+
 
 ####### Usuarios
 class UserMutation(DsRelayFormMutation):
@@ -40,6 +41,40 @@ class RemoveUser(relay.ClientIDMutation):
         return RemoveUser(user=user)  
 
 
+class NetworkCredentialMutation(DsRelayFormMutation):
+    """
+    Creating and Updating NetworkCredential.
+    This method create and update the NetworkCredential
+    When id field is informed it update de related data object, otherwise a new NetworkCredential is created.
+    """
+    class Meta:
+        form_class = NetworkCredentialForm
+
+    credential = Field(NetworkCredentialType)
+    
+    # @login_required
+    def perform_mutate(form, info):
+        credential = form.save()
+        return UserMutation(credential=credential)
+
+
+class RemoveNetworkCredential(relay.ClientIDMutation):
+    class Input:
+        id = ID(required=True)
+
+    networkCredential = Field(UserType)
+
+    @classmethod
+    def mutate_and_get_payload(cls, root, info, id):
+        networkCredential = NetworkCredential.objects.get(pk=from_global_id(id)[1])
+        networkCredential.delete()
+        return RemoveUser(networkCredential=networkCredential)  
+
+
 class Mutation(ObjectType):
     user = UserMutation.Field()
     remove_user = RemoveUser.Field()
+    
+    networkCredential = NetworkCredentialMutation.Field()
+    remove_networkCredential = RemoveNetworkCredential.Field()
+
