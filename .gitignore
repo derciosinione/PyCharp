@@ -5,7 +5,7 @@ db.sqlite3
 
 # C#
 *obj
-*SGI.v12.suo
+*frontend.v12.suo
 *.sln       
 *.csproj    
 *.vbproj    
