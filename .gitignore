@@ -1,3 +1,8 @@
+# Python DB
 \.vscode/
 \__pycache__/
 db.sqlite3
+
+# C#
+*obj
+*SGI.v12.suo
