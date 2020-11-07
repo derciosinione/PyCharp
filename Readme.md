@@ -1,5 +1,5 @@
 # PyCsharp key
-This project will be built using Python and C#.
+This project is being built using Python and C#.
 
 ## Objectives
 <p>Create an app where the user can save his/her social network credential.</p>
