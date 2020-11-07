@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Post, User, NetworkCredential
+from .models import User, NetworkCredential
 
 
 class UserForm(UserCreationForm):
@@ -27,8 +27,3 @@ class NetworkCredentialForm(forms.ModelForm):
         
         # def save(self, commit=True):
         #     self.instance
-        
-class PostForm(forms.ModelForm):    
-    class Meta:
-        model = Post
-        fields = ['title','content','user'] 
