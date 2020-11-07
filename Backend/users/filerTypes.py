@@ -1,6 +1,6 @@
 from django_filters import FilterSet, OrderingFilter
 
-from .models import User, NetworkCredential
+from .models import User, NetworkCredential, Post
 
 class UserFilter(FilterSet):
     class Meta:
@@ -51,3 +51,26 @@ class NetworkCredentialFilter(FilterSet):
             )
         )
 
+
+class PostFilter(FilterSet):
+    class Meta:
+        model = Post
+        # fields = '__all__'
+        exclude = ['picture']
+    
+    filter_fields = {
+            'title': ['exact', 'icontains', 'istartswith'],
+            'content': ['exact', 'icontains', 'istartswith'],
+            'user': ['exact','icontains', 'istartswith'],
+         }
+    
+    order_by = OrderingFilter(
+        fields = (
+            # field and de argument
+            ('id','id'),
+            ('title','title'),
+            ('content','content'),
+            # ('user__username', 'user'),
+            ('dateCreated', 'dateCreated'),
+        )
+    )
