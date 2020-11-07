@@ -6,3 +6,15 @@ db.sqlite3
 # C#
 *obj
 *SGI.v12.suo
+*.sln       
+*.csproj    
+*.vbproj    
+*.vcxproj   
+*.vcproj    
+*.dbproj    
+*.fsproj    
+*.lsproj    
+*.wixproj   
+*.modelproj 
+*.sqlproj   
+*.wwaproj  
