@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from datetime import timedelta
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'u@#c0(7%*)pbzb#3kbsm4sa37=c!4+qcc()6#d2bh)w(74#jv5'
+SECRET_KEY = 'm1h*xb1oixbg9ypi4ba^xr$qnk&dq9)fu3m221dpkq4kmdu@-d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,7 +44,7 @@ INSTALLED_APPS = [
     'django_filters',
 	'corsheaders',
     'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
-
+    
     'users.apps.UsersConfig',
 ]
 
@@ -123,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -139,6 +141,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# STATICFILES_DIRS = [
+     # os.path.join(BASE_DIR, 'frontend/static')
+# ]
+
+#Access-Control-Allow-Headers
+
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
 ]
@@ -150,5 +158,14 @@ AUTHENTICATION_BACKENDS = [
 
 GRAPHQL_JWT = {
 'JWT_ALLOW_ARGUMENT': True,
+# 'JWT_VERIFY_EXPIRATION': True,
 'JWT_LONG_RUNNING_REFRESH_TOKEN': True,
+# 'JWT_EXPIRATION_DELTA': timedelta(minutes=5),
+# 'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
+# 'JWT_REFRESH_EXPIRED_HANDLER': lambda orig_iat, context: False,
 }
+
+# Configuração do local onde os ficheiros de upload serão guardados
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+

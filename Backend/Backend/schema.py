@@ -1,11 +1,11 @@
 import graphene
 import graphql_jwt
+
 from django.dispatch import receiver
 from graphql_jwt.refresh_token.signals import refresh_token_rotated
 
 from users.schema import Query as usersQuery, Mutation as usersMutation
 from users.query import UserType
-
 
 class ObtainJSONWebToken(graphql_jwt.relay.JSONWebTokenMutation):
     user = graphene.Field(UserType)
@@ -30,6 +30,8 @@ class Mutation(
     revoke_token = graphql_jwt.Revoke.Field()
     delete_token_cookie = graphql_jwt.DeleteJSONWebTokenCookie.Field()
     delete_refresh_token_cookie = graphql_jwt.refresh_token.relay.DeleteRefreshTokenCookie.Field()
+    
+    
 
     #4.2.6 One time only use refresh token
     @receiver(refresh_token_rotated)

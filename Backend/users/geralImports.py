@@ -1,22 +1,7 @@
+from graphene import Mutation, relay, ObjectType, ID, String, Field, List
 from graphql_relay import from_global_id
 from graphene_django.forms.mutation import DjangoModelFormMutation
 
-
-class DsRelayFormMutation(DjangoModelFormMutation):
-    class Meta:
-        abstract = True
-
-    @classmethod
-    def get_form_kwargs(cls, root, info, **input):
-            kwargs = {"data": input}
-            
-            pk = input.pop("id", None)
-            if pk:
-                _, raw_pk = from_global_id(pk)
-                instance = cls._meta.model._default_manager.get(pk=raw_pk)
-                kwargs["instance"] = instance
-            return kwargs
-        
 
 def user_verification(modeldataUser, user):
     """[User Verification]
@@ -39,23 +24,19 @@ def user_verification(modeldataUser, user):
         raise Exception("You do not have permission to perform this action!")
     return True
 
-# class DsRelayFormMutation(DjangoModelFormMutation):          
-#     class Meta:
-#         abstract = True
-        
-#     @classmethod
-#     def get_form_kwargs(cls, root, info, **input):
-            
-#             fields = ["id","user"]
 
-#             c = 0
-#             for i in fields:
-#                 try:
-#                     input[fields[c]] = from_global_id(input[i])[1]
-#                 except:
-#                     continue
-#                 c +=1
-        
-#             kwargs = {"data": input}
-#             return kwargs
-    
+
+class DsRelayFormMutation(DjangoModelFormMutation):
+    class Meta:
+        abstract = True
+
+    @classmethod
+    def get_form_kwargs(cls, root, info, **input):
+            kwargs = {"data": input}
+
+            pk = input.pop("id", None)
+            if pk:
+                _, raw_pk = from_global_id(pk)
+                instance = cls._meta.model._default_manager.get(pk=raw_pk)
+                kwargs["instance"] = instance
+            return kwargs

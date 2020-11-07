@@ -1,3 +1,4 @@
+from users.models import NetworkCredential
 from django_filters import FilterSet, OrderingFilter
 
 from .models import User, NetworkCredential
@@ -50,4 +51,3 @@ class NetworkCredentialFilter(FilterSet):
                 ('dateCreated', 'dateCreated'),
             )
         )
-

@@ -17,5 +17,5 @@ class NetworkCredential(models.Model):
     dateCreated = models.DateField(auto_now=True)
     
     def __str__(self):
-        return '%s - %s' % (self.user.username,self.social_network) 
+        return '%s - %s' % (self.user.username, self.social_network) 
 
