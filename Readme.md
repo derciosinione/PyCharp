@@ -34,9 +34,6 @@ Python is being used for Back-end using the following technologies:
 C# is being used for Front-end using Windows Form Application.
 
 ### Required C# technologies
-<ul>
-<li>Bunifu</li>
-</ul>
 
 </br></br>
 <!-- ![Png](assets/imgs/sr-light.png) -->
